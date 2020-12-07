@@ -54,11 +54,12 @@ class DrawingUtil {
             DrawingUtil.drawLine(context, 0, 0, (size / 3) * sf1, 0)
             context.save()
             context.translate(size / 3, 0)
-            context.rotate(-sf2 * Math.PI / 2)
-            DrawingUtil.drawLine(context, 0, 0, size * sf3, 0)
+            context.rotate(-sf3 * Math.PI / 2)
+            DrawingUtil.drawLine(context, 0, 0, size * sf2, 0)
             context.restore()
             context.restore()
         }
+        context.fillRect(-size / 3, -size * sf4, 2 * size / 3, size * sf4)
         context.restore()
     }
 
@@ -157,7 +158,7 @@ class BRBFNode {
     state : State = new State()
 
     constructor(private i : number) {
-
+        this.addNeighbor()
     }
 
     addNeighbor() {
