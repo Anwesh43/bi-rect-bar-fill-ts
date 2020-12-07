@@ -210,3 +210,25 @@ class BiRectBarFill {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    animator : Animator = new Animator()
+    brbf : BiRectBarFill = new BiRectBarFill()
+
+    render(context : CanvasRenderingContext2D) {
+        this.brbf.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.brbf.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.brbf.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
